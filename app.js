@@ -1,5 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Get Directions button functionality
+    // Initialize Material Components
+    const buttons = document.querySelectorAll('.mdc-button');
+    buttons.forEach(button => {
+        mdc.ripple.MDCRipple.attachTo(button);
+    });
+
+    const iconButtons = document.querySelectorAll('.mdc-icon-button');
+    iconButtons.forEach(iconButton => {
+        mdc.ripple.MDCRipple.attachTo(iconButton);
+    });
+
+    // Get Directions functionality
     const getDirectionsBtn = document.getElementById('getDirections');
     if (getDirectionsBtn) {
         getDirectionsBtn.addEventListener('click', () => {
@@ -8,19 +19,37 @@ document.addEventListener('DOMContentLoaded', () => {
             window.open(mapsUrl, '_blank');
         });
     }
-    
-    // Check if app is running as PWA
-    if (window.matchMedia('(display-mode: standalone)').matches) {
-        console.log('Running as PWA');
+
+    // Share functionality
+    const shareBtn = document.querySelector('.mdc-icon-button[aria-label="Share"]');
+    if (shareBtn && navigator.share) {
+        shareBtn.addEventListener('click', async () => {
+            try {
+                await navigator.share({
+                    title: 'IDTO Event',
+                    text: 'Check out this upcoming IDTO event!',
+                    url: window.location.href
+                });
+            } catch (err) {
+                console.log('Error sharing:', err);
+            }
+        });
+    } else {
+        shareBtn.style.display = 'none';
     }
-    
-    // Handle offline status
-    window.addEventListener('online', updateOnlineStatus);
-    window.addEventListener('offline', updateOnlineStatus);
-    
-    function updateOnlineStatus() {
-        if (!navigator.onLine) {
-            alert('You are currently offline. Some features may not be available.');
-        }
+
+    // Bookmark functionality
+    const bookmarkBtn = document.querySelector('.mdc-icon-button[aria-label="Bookmark"]');
+    if (bookmarkBtn) {
+        bookmarkBtn.addEventListener('click', () => {
+            const icon = bookmarkBtn.querySelector('i');
+            if (icon.textContent === 'bookmark_border') {
+                icon.textContent = 'bookmark';
+                // Add to favorites logic here
+            } else {
+                icon.textContent = 'bookmark_border';
+                // Remove from favorites logic here
+            }
+        });
     }
 });
