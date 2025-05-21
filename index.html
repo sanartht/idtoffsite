@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IDTO Events</title>
+    <meta name="description" content="Information about upcoming IDTO events">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="apple-touch-icon" href="icon.png">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>IDTO</h1>
+        </header>
+        
+        <main>
+            <section class="event-info">
+                <h2>Upcoming Events</h2>
+                <h3>13th IDTO</h3>
+                <p class="event-date">Friday, 3rd May 2024</p>
+            </section>
+            
+            <hr>
+            
+            <section class="join-event">
+                <h3>Join Event</h3>
+                <div class="location">
+                    <h4>Location</h4>
+                    <p>LDC, RCP, Navi Mumbai, Maharashtra 400701</p>
+                    <button id="getDirections" class="btn">Get Directions</button>
+                </div>
+            </section>
+            
+            <hr>
+            
+            <section class="schedule">
+                <h3>Schedule</h3>
+                <p>Friday, 3rd May 2024 - Saturday, 4th May 2024</p>
+                <ul>
+                    <li>A-A</li>
+                    <li><a href="https://staging.jioidt.com" target="_blank">staging.jioidt.com</a></li>
+                </ul>
+            </section>
+        </main>
+        
+        <footer>
+            <p>© 2024 IDTO</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        // Register service worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('service-worker.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
