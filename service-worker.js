@@ -1,10 +1,12 @@
-const CACHE_NAME = 'idto-events-v1';
+const CACHE_NAME = 'idto-events-material-v1';
 const urlsToCache = [
     '/',
     '/index.html',
     '/styles.css',
     '/app.js',
-    '/icon.png'
+    '/assets/icon.png',
+    'https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap',
+    'https://fonts.googleapis.com/icon?family=Material+Icons'
 ];
 
 self.addEventListener('install', event => {
