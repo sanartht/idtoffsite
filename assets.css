@@ -1,0 +1,73 @@
+/* Mobile First Approach - Base styles already cover mobile */
+
+/* Tablet Styles */
+@media (min-width: 600px) {
+    .app-title {
+        font-size: 2rem;
+    }
+    
+    .events-grid {
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    }
+    
+    .event-form {
+        padding: 2.5rem;
+    }
+}
+
+/* Desktop Styles */
+@media (min-width: 900px) {
+    .app-header {
+        padding: 1.5rem 0;
+    }
+    
+    .nav-list {
+        justify-content: flex-start;
+    }
+    
+    .events-grid {
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    }
+    
+    .event-card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+    
+    .event-content {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .event-actions {
+        margin-top: auto;
+    }
+}
+
+/* Large Desktop Styles */
+@media (min-width: 1200px) {
+    .container {
+        padding: 0;
+    }
+    
+    .events-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Special cases for very small screens */
+@media (max-width: 400px) {
+    .nav-list {
+        flex-wrap: wrap;
+    }
+    
+    .nav-list li {
+        padding: 0.5rem;
+    }
+    
+    .install-btn {
+        display: none;
+    }
+}
